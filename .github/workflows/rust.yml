@@ -5,6 +5,8 @@ on:
   pull_request:
     branches:
       - main
+    paths:
+      - wasm/**
 name: Rust test and lint
 defaults:
   run:
