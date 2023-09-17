@@ -5,7 +5,10 @@ on:
   pull_request:
     branches:
       - main
-name: Rust
+name: Rust test and lint
+defaults:
+  run:
+    working-directory: wasm
 jobs:
   build_and_test:
     name: run unit tests
