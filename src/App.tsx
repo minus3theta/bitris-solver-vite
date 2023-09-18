@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-import './App.css'
 import init, { srs } from 'wasm'
 
 function App() {
@@ -10,7 +9,7 @@ function App() {
   return (
     <>
       <h1>PC finder</h1>
-      <div className="card">
+      <div>
         <button onClick={() => console.log(srs())}>Run</button>
       </div>
     </>
