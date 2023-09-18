@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import init, { srs } from 'wasm'
+import { Button } from '@mui/material'
 
 function App() {
   useEffect(() => {
@@ -10,7 +11,7 @@ function App() {
     <>
       <h1>PC finder</h1>
       <div>
-        <button onClick={() => console.log(srs())}>Run</button>
+        <Button variant="outlined" onClick={() => console.log(srs())}>Run</Button>
       </div>
     </>
   )
