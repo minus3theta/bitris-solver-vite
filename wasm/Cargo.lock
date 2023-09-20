@@ -3,14 +3,26 @@
 version = 3
 
 [[package]]
+name = "anyhow"
+version = "1.0.75"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a4668cab20f66d8d020e1fbc0ebe47217433c1b6c8f2040faf858554e394ace6"
+
+[[package]]
 name = "bitris"
 version = "0.2.0"
-source = "git+https://github.com/knewjade/bitris.git?rev=c340ce1bba9be11ae3a4ee00c65b0c2076442a37#c340ce1bba9be11ae3a4ee00c65b0c2076442a37"
+source = "git+https://github.com/minus3theta/bitris.git?rev=56ab3d4c244611625d620c2d381fae330585c629#56ab3d4c244611625d620c2d381fae330585c629"
+dependencies = [
+ "fxhash",
+ "itertools",
+ "thiserror",
+ "tinyvec",
+]
 
 [[package]]
 name = "bitris_commands"
 version = "0.1.0"
-source = "git+https://github.com/knewjade/bitris-commands?rev=f2f6348285209bf22bf5e4f6b6a277767a163f2d#f2f6348285209bf22bf5e4f6b6a277767a163f2d"
+source = "git+https://github.com/minus3theta/bitris-commands?rev=dda786e737ab730e8dea2363657aad0670771f63#dda786e737ab730e8dea2363657aad0670771f63"
 dependencies = [
  "bitris",
  "bitvec",
@@ -200,6 +212,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "tinyvec"
+version = "1.6.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "87cc5ceb3875bb20c2890005a4e226a4651264a5c75edb2421b52861a0a0cb50"
+
+[[package]]
 name = "unicode-ident"
 version = "1.0.12"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -209,6 +227,7 @@ checksum = "3354b9ac3fae1ff6755cb6db53683adb661634f67557942dea4facebec0fee4b"
 name = "wasm"
 version = "0.1.0"
 dependencies = [
+ "anyhow",
  "bitris_commands",
  "wasm-bindgen",
 ]
