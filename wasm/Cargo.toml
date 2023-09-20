@@ -10,4 +10,5 @@ crate-type = ["cdylib", "rlib"]
 
 [dependencies]
 wasm-bindgen = "0.2.87"
-bitris_commands = { git = "https://github.com/knewjade/bitris-commands", rev = "f2f6348285209bf22bf5e4f6b6a277767a163f2d" }
+bitris_commands = { git = "https://github.com/minus3theta/bitris-commands", rev = "dda786e737ab730e8dea2363657aad0670771f63" }
+anyhow = "1.0.75"
