@@ -1,44 +1,41 @@
 import { Box, Button, Container, TextField } from "@mui/material";
 import { srs } from 'wasm'
-
-const defaultBoardStr = `\
-###.....##
-###....###
-###...####
-###....###`
+import Board from "./Board";
+import { useEffect, useState } from "react";
+import { emptyBoardData, toggleBoardCell, BoardData, emptyRowData, boardToString } from "./BoardData";
 
 export default function Solver() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    const data = new FormData(event.currentTarget)
-    const boardStr = data.get("boardStr")!.toString()
-    const height = Number(data.get("height")!.toString())
+  const handleRun = () => {
+    const boardStr = boardToString(boardData)
     console.log(srs(boardStr, height))
   }
+  const [height, setHeight] = useState(4)
+  const [boardData, setBoardData] = useState<BoardData>(emptyBoardData(4))
+  useEffect(() => {
+    setBoardData((prev) => {
+      const data = prev.slice(0, height)
+      while (data.length < height) {
+        data.push(emptyRowData())
+      }
+      return data
+    })
+  }, [height])
 
   return <Container>
-    <Box component="form" onSubmit={handleSubmit}>
-      <TextField
-        margin="normal"
-        label="Board"
-        id="boardStr"
-        name="boardStr"
-        multiline
-        fullWidth
-        rows={10}
-        InputProps={{ sx: { fontFamily: "monospace" } }}
-        defaultValue={defaultBoardStr}
-      />
+    <Box>
       <TextField
         margin="normal"
         label="Lines to delete"
-        id="height"
-        name="height"
         fullWidth
         type="number"
-        defaultValue={4}
+        value={height}
+        onChange={(e) => setHeight(Number(e.target.value))}
       />
-      <Button type="submit" variant="outlined">Run</Button>
+      <Board
+        boardState={boardData}
+        handleClickAt={(x, y) => setBoardData((prev: BoardData) => toggleBoardCell(prev, x, y))}
+      />
+      <Button variant="outlined" onClick={handleRun}>Run</Button>
     </Box>
   </Container>
 }

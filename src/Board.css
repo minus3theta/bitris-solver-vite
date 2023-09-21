@@ -1,0 +1,18 @@
+button.cell {
+  border: 1px solid #999;
+  border-radius: 0;
+  width: min(10%, 30px);
+  aspect-ratio: 1/1;
+  padding: 0;
+  margin-right: -1px;
+  margin-bottom: -1px;
+}
+
+.row {
+  display: flex;
+}
+
+.board {
+  display: flex;
+  flex-direction: column-reverse;
+}
